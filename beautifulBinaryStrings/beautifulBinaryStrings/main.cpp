@@ -5,6 +5,7 @@
 //  Created by Mario Jimenez on 3/23/17.
 //  Copyright © 2017 mariot. All rights reserved.
 //
+//  https://www.hackerrank.com/challenges/beautiful-binary-string
 
 #include <iostream>
 #include <string>
