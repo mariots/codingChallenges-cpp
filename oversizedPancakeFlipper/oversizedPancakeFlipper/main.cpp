@@ -13,6 +13,7 @@ using namespace std;
 
 //string flipPancakes(string &pancakes, int position, int flipperLength);
 void printPancakes(string pancakes);
+bool isImpossible(string pancakes, bool &impossible);
 
 
 int main() {
@@ -25,11 +26,9 @@ int main() {
     cout << "What is the name  of the file?" << endl;
     cin >> nameOfFile;
     
-    ifstream testCaseInput("A-small-attempt0.in");
+    ifstream testCaseInput(nameOfFile);
     
     testCaseInput >> testCases;
-    
-    cout << testCases;
     
     for (int test = 1; test <= testCases; test++) {
         
@@ -58,18 +57,7 @@ int main() {
         }
     
         
-        for (int position = 0; position < pancakes.length(); position++) {
-            
-            //Loop over pancakes and check to see if any 1 is not happy.
-            if(pancakes[position] == '-') {
-                impossible = true;
-                break;
-            } else {
-                impossible = false;
-            }
-        }
-        
-        if(impossible) {
+        if(isImpossible(pancakes, impossible)) {
             cout << "Case #" << test << ": IMPOSSIBLE" << endl;
         } else {
             cout << "Case #" << test << ": " << flipCount << endl;
@@ -80,6 +68,7 @@ int main() {
     return 0;
 }
 
+
 void printPancakes(string pancakes) {
     
     for (int position = 0; position < pancakes.length(); position++) {
@@ -87,4 +76,20 @@ void printPancakes(string pancakes) {
     }
     
     cout << endl;
+}
+
+bool isImpossible(string pancakes, bool &impossible) {
+    
+    for (int position = 0; position < pancakes.length(); position++) {
+        
+        //Loop over pancakes and check to see if any 1 is not happy.
+        if(pancakes[position] == '-') {
+            impossible = true;
+            break;
+        } else {
+            impossible = false;
+        }
+    }
+    
+    return impossible;
 }
